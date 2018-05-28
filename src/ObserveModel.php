@@ -24,8 +24,9 @@ trait ObserveModel
 {
     protected static function boot()
     {
-        parent::boot();
+        static::setEventDispatcher( new \Illuminate\Events\Dispatcher());
 
+        parent::boot();
 
         
         //create
