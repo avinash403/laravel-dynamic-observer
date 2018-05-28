@@ -27,66 +27,93 @@ trait ObserveModel
         parent::boot();
 
 
-        //different methods for different updates
+        
+        //create
         static::creating(function($model) {
             if(method_exists($model, 'beforeCreate')){
-	            $model->beforeCreate($model);
+                $model->beforeCreate($model);
             }
 
             if(method_exists($model, 'beforeModelActivity')){
-	            $model->beforeModelActivity($model);
+                $model->beforeModelActivity($model);
             }
 
         });
 
         static::created(function($model) {
-	        if(method_exists($model, 'afterCreate')){
-    	        $model->afterCreate($model);
-    	    }
- 			
- 			if(method_exists($model, 'beforeModelActivity')){
-	            $model->beforeModelActivity($model);
+            if(method_exists($model, 'afterCreate')){
+                $model->afterCreate($model);
+            }
+            
+            if(method_exists($model, 'afterModelActivity')){
+                $model->afterModelActivity($model);
             }
         });
 
+        
+        //update
         static::updating(function($model) {
-	        if(method_exists($model, 'beforeUpdate')){
-            	$model->beforeUpdate($model);
+            if(method_exists($model, 'beforeUpdate')){
+                $model->beforeUpdate($model);
             }
 
- 			if(method_exists($model, 'beforeModelActivity')){
-	            $model->beforeModelActivity($model);
+            if(method_exists($model, 'beforeModelActivity')){
+                $model->beforeModelActivity($model);
             }
 
         });
 
         static::updated(function($model) {
-	        if(method_exists($model, 'afterUpdate')){
-            	$model->afterUpdate($model);
-            }
-
- 			if(method_exists($model, 'afterModelActivity')){
-	            $model->afterModelActivity($model);
-            }
-        });
-
-        static::deleting(function($model) {
-	        if(method_exists($model, 'beforeDelete')){
-            	$model->beforeDeleting($model);
+            if(method_exists($model, 'afterUpdate')){
+                $model->afterUpdate($model);
             }
 
             if(method_exists($model, 'afterModelActivity')){
-	            $model->afterModelActivity($model);
+                $model->afterModelActivity($model);
+            }
+        });
+
+        //save
+        static::saving(function($model) {
+            if(method_exists($model, 'beforeSave')){
+                $model->beforeSave($model);
+            }
+
+            if(method_exists($model, 'beforeModelActivity')){
+                $model->beforeModelActivity($model);
+            }
+
+        });
+
+        static::saved(function($model) {
+            if(method_exists($model, 'afterSave')){
+                $model->afterSave($model);
+            }
+
+            if(method_exists($model, 'afterModelActivity')){
+                $model->afterModelActivity($model);
+            }
+        });
+
+        
+        //delete
+        static::deleting(function($model) {
+            if(method_exists($model, 'beforeDelete')){
+                $model->beforeDelete($model);
+            }
+
+            if(method_exists($model, 'beforeModelActivity')){
+                $model->beforeModelActivity($model);
             }
         });
 
         static::deleted(function($model) {
-	        if(method_exists($model, 'afterDelete')){
-            	$model->afterDeleting($model);
+            if(method_exists($model, 'afterDelete')){
+                $model->afterDelete($model);
             }
 
             if(method_exists($model, 'afterModelActivity')){
-	            $model->afterModelActivity($model);
+                $model->afterModelActivity($model);
             }
         });
     }   
