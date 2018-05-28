@@ -1,12 +1,13 @@
 {
     "name": "ak403602/laravel-dynamic-observer",
-    "description": "allows observing models in model itself",
+    "description": "package that allows observing eloquent models in model itself",
     "type": "package",
     "license": "none",
     "authors": [
         {
             "name": "avinash kumar",
-            "email": "ak403602@gmail.com"
+            "email": "ak403602@gmail.com",
+            "homepage": "https://github.com/avinash403"
         }
     ],
     "version":"1.0.0",
