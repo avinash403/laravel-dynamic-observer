@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
 class TestModel extends Model
 {
    use ObserveModel;
-   
+
    protected $table = 'tests';
 
    protected $fillable = ['test'];
@@ -53,7 +53,7 @@ class TestModel extends Model
    private function beforeModelActivity($model){
    		array_push($GLOBALS['methods'], 'beforeModelActivity');
    }
-   
+
    private function afterModelActivity($model){
    		array_push($GLOBALS['methods'], 'afterModelActivity');
    }

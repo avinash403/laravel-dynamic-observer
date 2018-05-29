@@ -22,9 +22,11 @@ namespace ObserveModel;
 
 trait ObserveModel
 {
-    protected static function boot()
+    public static function boot()
     {
-        static::setEventDispatcher( new \Illuminate\Events\Dispatcher());
+        if(!static::getEventDispatcher()){
+            static::setEventDispatcher( new \Illuminate\Events\Dispatcher());
+        }
 
         parent::boot();
 
