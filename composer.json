@@ -1,5 +1,5 @@
 {
-    "name": "ak403602/laravel-dynamic-observer",
+    "name": "avinash403/laravel-dynamic-observer",
     "description": "package that allows observing eloquent models in model itself",
     "type": "package",
     "license": "none",
@@ -10,7 +10,8 @@
             "homepage": "https://github.com/avinash403"
         }
     ],
-    "version":"1.0.0",
+    "keywords":["laravel","observer","eloquent","dynamic observer"],
+    "version":"1.0.1",
     "require": {},
     "require-dev": {
         "phpunit/phpunit": "^7.1",
