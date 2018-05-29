@@ -11,7 +11,7 @@
         }
     ],
     "keywords":["laravel","observer","eloquent","dynamic observer"],
-    "version":"1.0.1",
+    "version":"1.0.3",
     "require": {},
     "require-dev": {
         "phpunit/phpunit": "^7.1",
