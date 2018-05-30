@@ -16,7 +16,7 @@ Any project with eloquent as database model.(can be a non-laravel project)
 ```php
 
 //import ObserveModel trait
-use ObserverModel\ObserverModel
+use ObserveModel\ObserveModel
 
 class ExampleModel extends Model
 {
