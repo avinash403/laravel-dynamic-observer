@@ -119,5 +119,12 @@ trait ObserveModel
                 $model->afterModelActivity($model);
             }
         });
+
+        //retrieve
+        static::retrieved(function($model) {
+            if(method_exists($model, 'afterRetrieve')){
+                $model->afterRetrieve($model);
+            }
+        });
     }   
 }

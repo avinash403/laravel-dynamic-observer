@@ -35,6 +35,7 @@ class ObserveModelTest extends TestCase
 
 		$this->assertContains('afterModelActivity', $GLOBALS['methods']);
 
+		$this->assertNotContains('afterRetrieve', $GLOBALS['methods']);
 	}
 
 	public function test_update()
@@ -62,6 +63,8 @@ class ObserveModelTest extends TestCase
 		$this->assertContains('beforeModelActivity', $GLOBALS['methods']);
 
 		$this->assertContains('afterModelActivity', $GLOBALS['methods']);
+
+		$this->assertContains('afterRetrieve', $GLOBALS['methods']);
 	}
 
 
@@ -90,6 +93,8 @@ class ObserveModelTest extends TestCase
 		$this->assertContains('beforeModelActivity', $GLOBALS['methods']);
 
 		$this->assertContains('afterModelActivity', $GLOBALS['methods']);
+
+		$this->assertContains('afterRetrieve', $GLOBALS['methods']);
 	}
 
 	public function test_save()
@@ -119,6 +124,8 @@ class ObserveModelTest extends TestCase
 		$this->assertContains('beforeModelActivity', $GLOBALS['methods']);
 
 		$this->assertContains('afterModelActivity', $GLOBALS['methods']);
+		
+		$this->assertContains('afterRetrieve', $GLOBALS['methods']);
 	}
 
 
@@ -146,5 +153,34 @@ class ObserveModelTest extends TestCase
 		$this->assertContains('beforeModelActivity', $GLOBALS['methods']);
 
 		$this->assertContains('afterModelActivity', $GLOBALS['methods']);
+
+		$this->assertNotContains('afterRetrieve', $GLOBALS['methods']);
+	}
+
+	public function test_retrive()
+	{
+		TestModel::create(['test'=>'soemthing']);
+		
+		$GLOBALS['methods'] = [];	
+
+		$model = TestModel::first();
+
+		$this->assertNotContains('beforeCreate', $GLOBALS['methods']);
+		
+		$this->assertNotContains('afterCreate', $GLOBALS['methods']);
+		
+		$this->assertNotContains('beforeSave', $GLOBALS['methods']);
+		
+		$this->assertNotContains('afterSave', $GLOBALS['methods']);
+
+		$this->assertNotContains('beforeDelete', $GLOBALS['methods']);
+		
+		$this->assertNotContains('afterDelete', $GLOBALS['methods']);
+
+		$this->assertNotContains('beforeModelActivity', $GLOBALS['methods']);
+
+		$this->assertNotContains('afterModelActivity', $GLOBALS['methods']);
+
+		$this->assertContains('afterRetrieve', $GLOBALS['methods']);
 	}
 }

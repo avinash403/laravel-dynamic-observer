@@ -57,4 +57,10 @@ class TestModel extends Model
    private function afterModelActivity($model){
    		array_push($GLOBALS['methods'], 'afterModelActivity');
    }
+
+   //afterRetrieve
+   private function afterRetrieve($model){
+         array_push($GLOBALS['methods'], 'afterRetrieve');
+   }
+
 }
