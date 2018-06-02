@@ -3,6 +3,10 @@ In laravel or any other framework which uses eloquent for data modelling, observ
 
 Laravel Dynamic Observer provides an easy way to observe your model in model itself by simply importing it in the model and defining the listener methods.
 
+## Motivation
+It is real easy to create a trait yourself and use it with eloquent model events but it is not worth it in writing the same piece of code in all of your projects.Apart from this, there are cases where we need to perform same action on creation, updation and deletion of a model(for example, clearing a particular cache after a record is updated, created or deleted). In those scenarios we have an option of either writing the same piece of code in all of those event listener or make a common method and call it in all of them. 
+The later scenario is the key motivation for making this package so that we can have a method in our model which gets called automatically as soon as any model activity(create, update or delete) happens.
+ 
 ## Compatibility 
 Any project with eloquent as database model.(can be a non-laravel project)
 
@@ -48,6 +52,26 @@ class ExampleModel extends Model
 * beforeModelActivity : gets called before any model activity
 * afterModelActivity : gets called after any model activity
 * afterRetrieve : gets called after a record is retrieved
+
+
+### Point to remember
+***Methods related to update and delete only gets called if the record is retrieved from the DB before updating or deleting. The reason is when we are using an update directly on a query, we are not actually performing any action.***
+For eg.
+
+```
+Model::where('field','value')->update(['field'=>'new value']);
+```
+
+here we are calling `Eloquent\Builder@update` not `Model@update`, so it just cannot call update event. Same is applicable to delete event.
+
+But when we are doing something like this:
+
+```
+Model::where('field','value')->first()->update(['field'=>'new value']);
+```
+
+We exactly know which record we have fetched. In this case we have used `Model@update`, which will cause event to fire.
+
 
 ### Test
 Run test by simply typing 
