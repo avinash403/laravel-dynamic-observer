@@ -47,6 +47,7 @@ class ExampleModel extends Model
 * afterSave : gets called after save method is invoked
 * beforeModelActivity : gets called before any model activity
 * afterModelActivity : gets called after any model activity
+* afterRetrieve : gets called after a record is retrieved
 
 ### Test
 Run test by simply typing 
